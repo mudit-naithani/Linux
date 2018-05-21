@@ -1,0 +1,69 @@
+Sample script taken: test.sh
+Command to: 
+
+to list files			  	: ls -art (a - hidden files)(r - in revers order) (t - last modified) 
+list all users				: cat etc/passwd
+list details of a user 			: finger 
+to check the current user 		: whoami
+to check CPU utilization		: top
+to check configuration			: ipconfig
+check hostname				: hostname -i
+to check the server is running fine	: ping <server IP>
+
+command to check ports in the server 	: netstat
+
+check ports and services running on it on a remote machine/cluster : nmap <server IP>
+
+check info abt ports in remote machine  : nmap <ip of remote machine>
+
+check all processess			: ps or top
+
+check a specific process		: ps aux | grep <service name> or ps -ef|grep <service name>
+
+kill process			  	: kill <pid>, force delete : kill -9 <pid>
+
+to find a file				: find -name "filename" <location>
+
+to add user				: sudo addduser <username>			**/etc/passwd** ----- Config file for Information about all users
+
+to delete user				: sudo userdel <username>
+
+to change password for a user		: sudo passwd <username>
+
+to add a new group			: sudo groupadd <groupname>
+
+to delete a group			: sudo groupdel <groupname>
+
+to add a user in a group		: sudo adduser <username> <groupname>
+
+to delete a user from a group		: sudo deluser <username> <groupname>		**/etc/group** ------ Config file for all the existing groups
+
+check mode permissions on a file	: sudo chmod 777 <filename/folder name> -R	**-R used only for folder ---- to give recursive permission to nested directory**   
+
+change ownership for a file/folder	: sudo chown -R <username> <filename>		**-R used only for folder ---- to give recursive permission to nested directory**
+
+change ownership for a group		: sudo chgrp -R <groupname> <filename>		**-R used only for folder ---- to give recursive permission to nested directory**
+
+to copy					: cp <source file location> <destination file location> Eg: cp /home/a.txt /home/testdirectory
+
+to run a script in background 		: test.sh &
+
+run a script in bckgrd and save the O/P : nohup test.sh & > abc.txt    (Screen command can also be used)
+
+to block any IP from hitting in server  : 
+
+to set the default shell of any user    : 
+
+to give sudo privileges to user		: gpasswd -a username wheel (for CentOS 7)
+
+					: tee 
+
+to extract words/lines			: grep
+
+to perform actions on extarcted info	: awk
+
+to substitue something in a file	: sed -s "abcd/efgh" abc.txt 
+
+Recursive directory listing of files	: tree
+
+
