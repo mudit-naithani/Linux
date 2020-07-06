@@ -1,0 +1,685 @@
+Linux (LPI Linux Essentials Certification):
+
+List all systemd services 					 - systemctl list-units
+CPU details							 - cat /proc/cpuinfo
+How much RAM is installed					 - cat /proc/meminfo
+Deleting/Re-writing the existing contents of a file 		 - echo '' > test.txt
+Creating a service - systemd (systemctl is the command for this) - only available since Ubuntu 15.0.4 and CentOS 7.0.0
+Finding a file							 - which test.txt
+Finding lines from the top in file				 - head -n 10 test.txt
+Finding lines from the bottom in file				 - tail -n 10 test.txt 
+Getting CPU core in server					 - lscpu (detailed) OR nproc 
+To know the server limit of how many files can be opened at once - ulimit -n
+To check how much RAM is free					 - free -m (check the 'available' tab in Output) 
+Check the kernel						 - uname -r
+Check ubuntu version						 - lsb_release -a
+list files				: ls -alsh (a- all files, l- long listing, s- size, h- human readable) or ll
+To search for keywords in the the command 			- man -k block
+To get the info for any command					- info ls
+To get the environment variables				- env
+To create a recursive directory structure at once		- mkdir -p directory/subdirectory/sub_subdirectory
+To prevent  overwriting an existing file	: NO CLOBBER : -n or -i (OPTION CHECK THIS OUT, -i is for interactive )
+List all disks							- lsblk (list blocks)
+File system mounts						- cat /etc/fstab
+disk usage							- df -h 
+No of lines in file						- wc -l test.txt
+No of characters in file					- wc -c test.txt
+how to utilize CUT command					- cat /etc/passwd | grep mudit | cut -d: -f6
+how to utilize wc command					- cat /etc/passwd | grep mudit | wc -l
+To see the password file for users				- cat /etc/shadow
+To see all the groups a user belongs to				- groups username
+Sorting data in a file						- cat test.txt | sort > test.txt
+To find slices or cgroups in systemd				- /sys/fs/cgroup/systemd
+To check service in a different host machine			- systemctl -H <Host IP> status tomcat
+
+GREP OPTIONS:
+
+how to grep two or more diff patterns from a file		- cat test | grep "Pattern1\|Patter2\|Pattern3"
+
+Searching for packages						- apt-cache search mysql | grep server (in Ubuntu)
+Search for specific packages					- rpm -qa | grep java 
+
+If condition Syntax						- if [some-text]
+								  then
+								  <command>
+								  fi
+If Condition Parameters :
+1. For files: 
+-d : file exists and is a directory
+-e : file exists
+-r : file exists and read permission is granted
+-w : file exists and write permission is granted
+-x : file exists and execute permission is granted
+-s : file exists and size > 0
+
+2. For strings:
+-n  : length of string > 0
+-z  : length of string = 0 (empty)
+
+TAR:
+
+Creating a tar file(archive)					- tar cf archive.tar test_file_*  (c - create archive)
+Dislaying the contents of a tar file				- tar tf archive.tar    (t - list the contents of archive)
+Append files to a tar file					- tar rf archive.tar file_*  (r - append to tar archive)
+Extracting specific file from a tar file			- tar xf archive.tar file1   (x - extract archive)
+Extracting multiple files from a tar file at once		- tar xf archive.tar --wildcards 'test_file_?'
+Extracting all files from tar file				- tar xf archive.tar
+Creating a tar file and compress(zip) it at the same time	- tar czf archive.tar.gz home/all_files (gzip compression)
+Extracting the zipped tar file					- tar xzf archive.tar.gz home/
+
+FOR LOOP: 						- for i in {1..10}; do touch file_$i; done
+
+Configuration details:
+
+Boot loader info						- /boot								
+what disk partitions to map automatically			- cat /etc/fstab
+checking nameserver						- cat /etc/resolv.conf
+System data abt kernels,sub system hardware devices is stored	- cd /sys
+ 
+User and group commands:
+
+Creating new user and creating a home directory			- sudo useradd -m username  (-m : make home directory)
+Creating password for a new user 				- sudo passwd username
+Setting up bash shell for new user for the first time		- sudo usermod -s /bin/bash username  (-s : login shell)
+Creation of home directory can be done manually			- sudo mkhomedir_helper username --->in Ubuntu only
+Boilerplate files and folder for new accounts			- /etc/skel
+Adding group							- sudo groupadd groupname
+Add user to a new group						- sudo usermod -a -G groupname usernmae
+
+Creating symbolic link(symlinks)				- ln -s <tartget_directory> linkname  (-s: symbolic)
+
+
+File permissions:
+
+Changing group of a file					- sudo chown :groupname testfile
+Providing permission to read write to a group as well		- chmod 664 testfile (6:read+write, 4:read-only, 1:execute)
+
+Application log data:
+
+General System logs and messages				- /var/log/messages
+Authentication logs						- /var/log/secure OR /var/log/auth.log
+System boot logs						- /var/log/boot.log
+Cron job logs							- /var/log/cron.log
+Kernel logs							- /var/log/kern.log
+Checking kernel log messages					- dmesg
+Authentication failure logs					- /var/log/faillog
+Checking people who last logged in 				- /var/log/lastlog
+
+List out CRONTAB						- crontab -l
+
+
+CHANGING CONFIGURATION FOR VIM					- cat /etc/vim/vimrc
+
+PROCESS IDs:
+
+List all process						- ps aux (BSD format) 
+List all process						- ps -eF (Linux format)
+View running process and resource usage(CPU utilization)	- top
+
+Network:
+
+List of IP address in local machine or devices connected	- ip addr show
+List current routing table					- ip route show
+DNS and nameserver info						- /etc/resolv.conf
+Getting IP address through host name				- host www.linuxacademy.com
+IP address and name server information				- dig www.linuxacademy.com
+To change hostname just for your local machine			- etc/resolv/conf :Add IP & provide any host name you want
+List of devices through network manager				- nmcli
+List of ntwrk conntns, routing tables, interface:  netstat -tlnp (t:tcp, l:listen, n:numeric(just IP,no hostnames), p:pid)
+To investigate into sockets					- ss 
+To check which port defines what				- cat /etc/services | grep 22----> port no
+
+Adding users in nagios					       	- htpasswd /usr/local/nagios/etc/htpasswd.users <new_user>
+===============================
+
+TASK TO DO IN LINUX: 
+1. CREATE A SAMBA LOCAL FILE SYSTEM IN 3 LAPTOPS
+
+CRON, SYTEMD, SUSTEMCTL, GRUB, HARD DISK - /DEV/, eth0, 
+==========================================================================
+
+Linux:
+Components:
+Hardware, kernel,GNU core, X Server(optional), Graphical interface
+
+X-Server- framework for GUI of server, it provides the GUI for linux
+STD IN - stream 0 - used for I/P  to the terminal
+STD OUT - stream 1 - used for O/P or displaying to the terminal
+STD ERR - stream 2 - Also used for displaying O/P to the terminal
+
+
+============================================================================
+
+RHEL administrator (EX200):
+
+Output redirection for errors in script				- script.sh 2> errors.txt
+Output redirection for all output(stderr+stdout)		- script.sh > all_out.txt 2>&1
+
+Grep useful arguments						- (-i :case insensitive, -v:find all instances where there is no pattern match, -w:word match rather than a pattern match)
+
+Grep Regular expressions:
+^ - Match expressions at the start of a line
+$ - Match expressions at the end of a line
+\ - Turn off special meaning of the next character
+^[ ] - Match any one of the enclosed characters as in [aeiou] or range [0-9]
+[^ ] - Match any one character except those enclosed in [], as in [^0-9]
+\{x,y\} - Match x to y occurences of the preceeding 
+
+
+ssh config file							- /etc/ssh/ssh_config
+
+IMPORTANT:
+
+D/F between su(interactive shell) and su - (login shell)        : su - invokes both, .bash_profile and .bashrc but su invokes only .bashrc.		- 
+.bash_logout							- Collection of commands that run whenever user logout
+.bash_history							- keeps a track of history command
+To check the disks attached					- fdisk -l
+
+File:
+
+Inode check							- ls -i filename (Filenames in linux are just a pointer to inode)
+Find command							- find . -name testfile 
+Locate command							- locate testfile
+*****Compare difference between two files			- diff file1 file2 (Diff command can be used with 'patch' command which can read the difference between two files and then fix them)
+
+Default permission given to files and directories from linux 	- 666
+Default umask							- 022
+That is why, Default settings for new files creation		- 644
+
+
+Process:
+
+List all processes						- ps aux
+List all running processes in a tree form			- pstree
+Combination of ps and grep					- pgrep httpd
+If we need process names as well with pgrep			- pgrep httpd -l
+To see all kill signals 					- kill -l (a total of 64 kill signals are there)
+Important kill signals			- SIGTERM : Ask the process to exit cleanly
+					- SIGKILL : Stop the proces immediately- prevents cleanup
+					- SIGHUP  : Signal hangup, stops process in a shell env, can read config files
+					- SIGINT  : Same thing as Ctrl+C
+					- SIGSTOP : Pause a process so it can be started later
+					- SIGCONT : Start a process that was paused by SIGSTOP or SIGTSTP
+					- SIGTSTP : (Terminal Stop) Ask the process to stop, similar to Ctr+Z
+
+Priority of Process			- nice --> Range -20 to 19 (-20:highest priority, 19:lowest priority)
+
+Increase/Decrease priority of process				- renice -n -20 pid
+Checking load average (3 ways)					- top OR uptime OR w
+
+LOGGING:
+
+Service which controls all the other logs in the system		- /etc/rsyslog.conf (service is rsyslog)
+8 Logging levels - 0 (emergeny panic, higest level), 1(alert),2(critical),3(error),4(warning),5(notice),6(info),7(debug)
+
+Logs can be sent and retreived to and from other servers as well- /etc/rsyslog.conf (can be changed here)
+
+Service that autoatically rotate logs 				- /etc/logrotate.conf --> logrotate is the service
+To check all error logs	of all services				- journalctl -p err
+To find errors since yesterday through journalctl		- journalctl -p err -since yesterday
+To find messages associated with a specific user id UID 1000	- journalctl _UID=1000 
+Path to journal configuration file				- /etc/systemd/journald.conf
+To know how much disk usage journalctl logs is consuming	- journalctl --disk-usage
+journalctl to see the last 20 lines				- journalctl -n 20
+jounalctl options						- 	-r: Shows newest entries first; 
+									-e: Jumps to the end of the page
+									-n: Shows only the most recent entries and limits the amount of lines specified
+									-f: Shows hte most recent log entries and follows the journal as new entries are created
+									-u: Shows only the entries for the service/unit specified
+
+
+LVM: LOGICAL VOLUME MANAGER
+
+Creating a physical volume					- pvcreate /dev/device1 /dev/device2 /dev/device3
+Creating a volume group						- vgcreate myVG /dev/device1 /dev/device2 /dev/device3
+Creating a logical volume					- lvcreate -L 100m myVG
+To display physical volumes					- pvdisplay
+To display volume group						- vgdisplay
+To display logical volumes					- lvdisplay
+
+
+ 
+
+
+VIRTUAL MACHINES:
+
+Setting up the host to be able to run as a virtual machine
+Packages list to be installed 					- qemu-kvm, python-virtinst, libvirt, libvirt-python, virt-manager, libguestfs-tools, virt-install, qemu-img, libvirt-client
+
+Service for virtual machine to work in RHEL			- libvirtd
+GUI tool to use for virtual management				- virt-manager
+Command line way to install VM					- virt-install --name centos7 --ram 1024 --diskpath=/path/to/disk.qcow2,size=8 --vcpus 1 --os-type linux --network bridge=virbr0 --location /path/to/linux.ISO --extra-args 'console=ttyS0'
+
+To work with VMs						- virsh list -all (display all VMs)
+To turn off VM							- virsh destroy VMname
+To edit the VM							- virsh edit VMname -->open the XML with all configuration
+
+
+							
+
+			
+BOOT PROCESS:
+
+GRUB2: If we have forgot the root password go to rd.break
+Other options: 
+emergency- similar to rd.break, but mounts the system disk
+rescue - Equivalent to the old single user mode, where some services are started and disks mounted
+
+==========================================================================================================
+
+
+
+
+RHCSA EXE200 (LONG COURSE 37 HOURS):
+
+MBR: Master Boot Record Partition, could only create partition of max 2 TB, to over come this issue cam GPT partition
+GPT: Consists of 128 primary partitons on a single device and each partition can have 8 Zebi bytes
+
+External hard drives/USB/other devices are attached at	`	- /dev
+Indise /dev, xvdf is the original hard disk
+
+Tool for managing MBR based partition				- fdisk
+
+Steps to create a MBR based partition:
+1. fdisk /dev/xvdf
+2. Then we can just select options from the table to create a primary partition
+
+After partition gets created, we need to map it to a file system:
+1. In /dev directory						- mkfs -t xfs xvdf1
+To check available block storage device	attached		- blkid
+2. change to /mnt and create a new mount directory		- mkdir mymount
+3. Mount the device						- mount /dev/xvdf1 /mnt/mymount
+If we do df -h now, we can see the new device mounted to the respecive location
+
+Now whatever data we enter into /mnt/mymount gets wrttien into that device
+
+To unmount					- umount /mnt/mymount (we provide the mount point here, not the device)
+If we do df -h now, the mount would no longer be attached
+
+To delete a partition:
+
+1. Go to /dev							- fdisk xvdf
+2. Chooose d for delete a partion from the table
+3. Choose the Partition no, and the partiton gets deleted and then we can write those changes.
+4. To reload the changes of deleted partition			- partprobe
+ 
+
+To mount through UUID						- mount -U <UUID> /mnt/mount
+You can check by df -h
+
+
+Steps to create a GPT based partition:
+
+1. Goto /dev
+2. Command gdisk /dev/xvdf
+3. Select n to add a new partition
+4. Select size of partition by selecting sector
+5. Select the filesystem(defaut can be 8300 which is Linux filesystem)
+5. Press w in order to write the changes to disk`
+
+
+
+========================================================================================
+
+LPIC-1:
+
+
+Linux is a psuedo file system, means fake,not real. It does not exist in a hard disk, a pseudo file system is created by the linux kernel when the system boots up and only exists in RAM once the system is up and running. Once the system logs off, that file system no longer exist as it gets wiped out when the ram is cleaned. When the system boots up, the system will create another pseudo file system using the same directories that will hold all information that the kernel uses at that point of time.
+There are multiple pseudo file systems that can be created in linux.
+	
+Linux takes everything as a file from hard drives,network devices, all processes and commands, everything is seen by linux as a file.
+
+KERNEL MODULES:
+
+Linux kernel is known as monolithic, means that it manages all the memory management and hardware device interaction by itself.
+
+Creating a logical volume					- lvcreate -L 100m myVG
+To list a kernel module						- uname -rm (r: release m:architecture)
+To list all modules being used by the kernel			- lsmod
+Display info about a specific kernel module			- modinfo <kernel_module_name>
+To dynamically load and unload kernel module			- modprobe -r <kernel_module_name> (r: remove)
+								- modprobe <kernel_module_name> --> load module again
+
+HARDWARE:
+
+All hard drives, usb, and external devices is shown in /dev
+
+Display PCI device(Sound/Video cards,Network controller)attached- lspci
+Display any USB attached					- lsusb
+Display processors/CPU info					- lscpu
+Display all hard disks attached	to the system			- lsblk
+To know which file system each partition contains		- lsblk -f
+
+BOOT PROCESS:
+
+BIOS--> BOOT SECTOR (on first hard drive) --> LINUX KERNEL --> INITIAL RAM DISK
+BIOS on the motherboard checks of all Input and Output devices, once evrything is ok, the boot process begin.
+BOOT Sector - GRUB, the boot program, looks for the section of a hard drive that contains the data needed to boot the OS
+LINUX KERNEL - Now the kernel is loaded by the above step, and then kernel loads the INITIAL RAM DISK which contains a bunch of device drives and loads the system drivers to mount the file system from the hard disk.
+After this, the kernel starts the INITIALIZATION SYSTEM.
+After Intialization system gets everything mounted, the initial ram disk gets destroyed.
+Kernel ring buffer is the area of RAM where all the logs/messages gets written when the system boots up and gets wiped off when the system is rebooted and again the new logs gets written. 
+System boot Logs can be checked at				- demsg (these logs are written into kernel ring buffer)
+Modern linux system uses this command to get kernel message logs- journalctl -k
+
+
+INIT:
+Based off of the System V init used in UNIX systems- sysvinit
+In the classical init system, services gets stared one after the other, this was okay but the problem came when one particular service was not yet ready which could hang the system preventing other services from starting.
+
+INIT Process:
+
+As we discussed, during the boot process, the kernel hands over the control to the initialization system.
+1. The first place kernel looks for is /sbin/init.
+2. The first thing that init does is read the configuration settings in /etc/inittab 
+3. the inittab process decides what run level the system should be operating in. A run-level is just a predefined configuration that the computer will operate within. Each run level starts and stop scripts for various services depending upon how the system has to be set-up. The system can only be operated at one run level at a time.
+
+Runlevels:
+
+0 - Halt/shutdown - this is when init runs scripts that stops services and shutdown the system)
+
+1 - Single user mode - In this setup, root is the only user which is allowed to login as this level is primarily used for repair functionalaties
+
+2 - Mutli-user mode (No networking ) - this level is for multiple users to login but without any network interfaces , nor are there any remote file systems mounted 
+
+3 - Multi-user mode (with networking) - Same as run level 2, with networking available (historically, this is the run level in which most linux systems run by default)
+
+4 - unused - It is unused but it is available if any administrator wants to set up a custom run level environment 
+
+5 - Multi-user(with networing and graphical desktop) - Same as run level 3 with a graphical desktop running as well
+
+6 - Reboot - This is where init stops services and restart the system
+ 
+Default locations of init scripts which runs at the boot process:
+
+Redhat based - /etc/rc.d
+Debian-based - /etc/init.d
+
+Inside /etc/rc.d directory:
+
+1. there are scrits for each run level, such as rc0.d, rc1.d, rc2.d and so on
+2. rc.sysinit - it does some housecleaning before we actually enter into run levels as defined in inittab file
+3. rc.local - this runs after the run levels have completely loaded, this file is usually customized by the administrator to start up some extra services or tasks that do not have their own init scripts.
+
+UPSTART: Unlike init, upstart offers asynchronous(parallel) starting of services, thereby decreasing boot uptimes
+
+init Boot Sequence:
+
+/sbin/init --> /etc/inittab --> /etc/rc.d/rc.sysinit --> /etc/rc.d/rcX.d (in sequential order) --> login
+
+difference between init.d and system.d:
+
+1. init and uptime rely on bash shell scripts
+2. systemd replaces the functonality of the shell scripts with compiled C code
+3. systemd utilizes unit files instead of bash scripts, located at 3 locations:
+	/usr/lib/systemd/system - default location where unit files are stored by packages
+	/etc/systemd/system - these take precendence over those in /usr, if we want to make any modifications, we can do it here in the files 
+	/run/systemd/system - these are runtime unit files
+
+To view all unit files on a system 		- systemctl list-unit-files
+To view any specific systemd unit file		- systemctl cat httpd.service (these unit files can also assist us to create our own unit file)
+
+Systemd is the New Init:
+Question. how does systemd boot the system as the kernel still looks for /sbin/init?
+Ans: systemd just took the place of /sbin/init by a symlink which has been created by the C++ developers
+
+ls -l /sbin/init
+/sbin/init -> ../lib/systemd/systemd    ----------> this is the symlink which as been created here, 
+so when the kernel fires up /sbin/init, it actually starts systemd and then systemd reads it unit files.
+
+To determine the run level the system is currently		- runlevel
+To change run level						- telinit <new run level>  (You need to be root)
+To verify the default run level from the file			- cat /etc/inittab
+
+How to Change the default run level without making any changes to /etc/inittab - While booting up, press any key to interrupt the boot process, which prompts to the GRUB menu, then press 'a' to modify the kernel arguments. After that a screen is displayed, just press space and then enter the run level you want to enter.
+
+Types of targets in systemd:
+
+multi-user.target - multi-iser system, same as run level 3 in classical init system
+graphical.target - multi-user system with desktop, same as run level 5	
+rescue.target - pulls in a basic system and file system mounts and provides a rescue shell, similar to run level 1
+basic.target - basic system, used during the boot process before another target takes over
+sysinit.target - system intialization,--> target after systemd takes over for the kernel, this gets the basic system started
+
+To display physical volumes					- pvdisplay
+To show all unit files						- systemctl list-unit-files
+To show all unit files for available targets			- systemctl list-unit-files -t target
+To show all loaded and active unit files			- systemctl list-units -t target
+To list the default target					- systemctl get-default
+To change the default target					- systemctl set-default <target>
+To change the running state of target to a different one	- systemctl isolate <target>
+To change to rescue target(same as run level 2)			- systemctl rescue
+To change to reboot target(same as run level 6)			- systemctl reboot (reboots system)
+To shutdown/poweroff the system	(same as run level 0)		- systemctl poweroff
+To broadcast message to all users before rebooting the system	- wall
+Advanced config and Power interface,registers system events	- ls /etc/acpi/
+
+Swap space - swap is temporary storage that acts like RAM. When a percentage of RAM is full, the kernel will move less used data to swap. We have an extra dedicated location(swap partition) in our hard drive that acts as swap space.
+
+
+To list the mounts in the system				- mount
+To list all block devices on a system				- lsblk
+To show the swap usage						- swapon --summary 
+
+
+LVM(LOGICAL VOLUME MANAGER):
+
+To list out physical volumes					- pvs  (s: scan)
+To list out the Volume groups within an LVM group		- vgs
+To list out the logical volumes within a LVM group		- lvs
+
+We can have two or more kernels configured in our linux. Just in case that if the new version of kernel is not compatible with the current harware setup, we can always go back to the old kernel by changing the default value to the appropriate kernel version in grub.conf file at /boot location.
+
+MANAGED SHARED LIBRARIES:
+
+Location to find shared libraries: /lib, /usr/lib, /usr/lib64(for 64-bit), /usr/local/lib, /usr/share
+
+To print out shared object(library) dependencies		- ldd /bin/cp (display libraries being used by copy command) 
+Configuration file pointing to directories and config files that hold references to library directory locations - /etc/ld.so.conf
+
+APT (APPLICATION PACKAGE TOOL):
+Installs applications along with their dependencies
+removes applications, updates and upgrades packages
+
+How it works:
+1. Reads the /etc/apt/sources.list
+2. Directs installation and uninstallation of packages to dpkg
+
+To remove aplication
+To remove package						- app-get remove 
+To remove all config files associated with that package		- app-get purge
+To upgrade all packages & install new ones upto the next release- apt-get dist-upgrade
+To download the package	but do not install it			- apt-get donwload <package>
+Search in local apt cache for a package that can be installed	- apt-cache search <package>
+Display basic info about a package				- apt-cache show <package>
+Display more technical info about a package			- apt-cache showpkg <package>
+
+DPKG - DEBIAN PACKAGE TOOL
+
+Apt-get handles dependencies by itself, dpkg does not, so dependencies need to be already installed or installed with the package.
+
+To display info about a package					- dpkg --info <package>
+List out packages that match the string				- dpkg -l nano
+To install a package						- dpkg -i <package>
+List out all files that were installed with a specified package	- dpkg -L <package>
+Remove the package						- dpkg -r <package>
+Remove package and all config files that were installed with it - dpkg -P <pkg>
+Search through package database if there are nay files	 	- dpkg -S <pkg>
+Allows for modificaton of package by re-running the app's configuration tool - dpkg-reconfigure <pkg>
+
+YUM (YELLOWDOG UPDATER, MODIFIED) : 
+
+Originally used for Yellowdog distro
+
+YUM Setup: 
+Config file: /etc/yum.conf
+Repository informantion: /etc/yum.repos.d/
+Caches latest repository info in /var/cache/yum
+
+To search online repositories for updated packages		- yum update
+To search for a package						- yum search
+To list info about a package					- yum info
+To display all installed packages				- yum list installed
+To clean up all yum's cache info and its local database file	- yum clean all 
+To install 							- yum install
+To uninstall a package, but not the dependencies		- yum remove
+To uninstall complete package and its dependencies		- yum autoremove
+To find out the package name if you do not know exact name	- yum whatprovides */httpd
+To reinstall a package						- yum reinstall
+	
+RPM(Red HAT PACKAGE MANAGER):
+
+RPM Database located at						- /var/lib/rpm
+YUM handles dependecies, RPM does not
+To display info for a package					- rpm -qpi <pkg>  (q: query, i:info)
+To list files in a package					- rpm -qpl <pkg>
+To list all installed packages					- rpm -qa 
+To install a package						- rpm -ivh <pkg>  (v:verbose, h:hash-marks)
+To upgrade an installed pkg with a newer version		- rpm -Uvh <pkg>
+To uninstall a pkg						- rpm -e <pkg>
+To verify all installed packages				- rpm -Va
+To convert .rpm file into cpio archive file			- rpm2cpio <rpm_pkg> | cpio -idmv (i:extract,d:make same directory structure,m:keep same modified time)
+
+TYPES OF SHELL:
+
+Bash - Bourne again shell
+csh - C programming style syntax
+ksh - korn shell, based on Bourne shell with some features of C shell
+zsh - Z shell includes element of bash shell and korn shell
+
+To view currently set environment variables			- env
+To display shell settings or shell variables for the session	- set
+To remove a variable or custom bash function			- unset
+To display shell options and their current settings		- shopt
+To export a variable to the current shell 			- export
+To locate application file that is located within users's PATH	- which
+To determine if something is a function, file, alias, keyword	- type pwd
+Run specific command again without even writing the command - !117 (check no from history command)
+Environment variable that determines how many lines the .bash_history file will contain - echo $HISTFILESIZE
+
+
+
+
+
+  
+
+
+
+
+
+
+=============================================================================
+
+
+Setting up Sonarqube as a service
+
+Step 1: Create a file /etc/systemd/system/sonarqube.service
+
+sudo vi /etc/systemd/system/sonarqube.service
+
+
+Step 2: Copy the following content on to the file.
+
+----------------------------------------------------------------
+[Unit]
+Description=SonarQube service
+After=syslog.target network.target
+ 
+[Service]
+Type=simple
+User=sonarqube
+Group=sonarqube
+PermissionsStartOnly=true
+ExecStart=/bin/nohup java -Xms32m -Xmx32m -Djava.net.preferIPv4Stack=true -jar /opt/sonarqube/lib/sonar-application-7.6.jar
+StandardOutput=syslog
+LimitNOFILE=65536
+LimitNPROC=8192
+TimeoutStartSec=5
+Restart=always
+ 
+[Install]
+WantedBy=multi-user.target
+---------------------------------------------------------------------
+
+
+Step 3: Start and enable sonarqube
+
+sudo systemctl start sonarqube
+sudo systemctl enable sonarqube
+
+
+
+Step 4: Check the sonarqube status to ensure it is running as expected.
+
+sudo systemctl status sonarqube
+
+
+
+
+
+
+
+
+
+==============================***********************===============================
+
+
+
+
+
+
+
+
+
+
+HOW TO CHECK SECURITY IN LINUX
+
+
+FIRST CHECK, SELinux - Enabled or disabled
+
+# SELinux is a security feature of the operating system designed to help protect some parts of the server from other parts.
+For example, if you run a web server and have some "vulnerable" code that allows for an attacker to run arbitrary commands then SELinux can help mitigate this, by preventing your web server from accessing files it's not allowed to see.
+
+Now you can disable SELinux and it shouldn't break anything. The server will keep on working as normal.
+But you will have disabled one of the security features.
+
+
+
+
+#Before disabling SELinux:
+
+Before disabling SELinux, you might want to start by relabeling the files on the system back to what they should be. Enter the below command:
+
+Command -			 /sbin/fixfiles onboot OR this command # touch /.autorelabel
+
+and then reboot, and wait as it will take about the same amount of time for the system to verify and reset errant SELinux labels in the system. 
+
+
+
+
+# If  the SELinux is enabled, yu can alwways use the below command for trubleshooting any error alarms messages
+
+For troubleshooting - 		sealert -a /var/log/audit/audit.log
+
+
+
+
+
+===============================************************=============================
+
+
+
+
+
+
+## Issues faced:
+
+PORTS:
+
+To check which all ports are active in server			- nmap localhost
+IF you want for some specific port to be checked		- sudo netstat -nlp | grep :8080
+List all ports, user and services running			- sudo lsof -i -P -n | grep LISTEN
+Connection timed out, check if a network connection can be done to a specific port to any specific server - telnet host port OR nc -v host port
+Setting proper permissions for init script and enablng tomcat for auto launch:
+chmod 755 /etc/rc.d/init.d/tomcat
+chkconfig --level 2345 tomcat on
